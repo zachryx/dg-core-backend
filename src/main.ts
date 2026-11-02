@@ -28,7 +28,8 @@ async function bootstrap() {
 
   SwaggerModule.setup("api-docs", app, document);
 
-  app.enableCors();
+  // reflect the request origin so credentialed requests (cookies) are allowed
+  app.enableCors({ origin: true, credentials: true });
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
