@@ -1,6 +1,5 @@
 [![Deploy to Cyclic](https://deploy.cyclic.app/button.svg)](https://deploy.cyclic.app/)
 
-
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -34,6 +33,63 @@
 ```bash
 $ yarn install
 ```
+
+## Environment Variables
+
+Copy the `env.example` file to `.env` and update the values with your configuration:
+
+```bash
+$ cp env.example .env
+```
+
+Required environment variables:
+
+### Database Configuration
+
+- `MONGO_URI` - MongoDB connection string
+
+### Mailer Configuration
+
+- `MAILER_HOST` - SMTP host for email service
+- `MAILER_PORT` - SMTP port for email service
+- `MAILER_USERNAME` - SMTP username/email
+- `MAILER_PASSWORD` - SMTP password
+- `MAILER_FROM_MAILER` - Default sender email address
+
+### Authentication & Security
+
+- `JWT_SECRET` - Secret key for JWT access tokens
+- `JWT_REFRESH_SECRET` - Secret key for JWT refresh tokens
+- `SESSION_SECRET` - Secret for express-session
+- `SALT_ROUND` - Number of salt rounds for bcrypt password hashing
+
+### Super Admin Account
+
+Optional. When both are set, a super admin account is created on startup if no account uses `ADMIN_EMAIL` yet. Leave them blank to skip.
+
+- `ADMIN_EMAIL` - Super admin email
+- `ADMIN_PASSWORD` - Super admin password. Only used when the account is created; changing it later does not update the existing account
+
+If `ADMIN_EMAIL` already belongs to a non-admin account, no admin is created and a warning is logged.
+
+### Google OAuth
+
+- `GOOGLE_CLIENT_ID` - Google OAuth client ID
+- `GOOGLE_CLIENT_SECRET` - Google OAuth client secret
+
+### AWS S3 Configuration
+
+- `D_AWS_REGION` - AWS S3 region
+- `D_AWS_ACCESS_KEY_ID` - AWS access key ID
+- `D_AWS_SECRET_ACCESS_KEY` - AWS secret access key
+- `D_AWS_BUCKET_NAME` - AWS S3 bucket name
+
+### Application Configuration
+
+- `PORT` - Application port (defaults to 3000)
+- `SERVER_URL` - Backend server URL (used for OAuth callbacks)
+- `CLIENT_URL` - Frontend client URL (used for email links)
+- `NODE_ENV` - Node environment (development/production)
 
 ## Running the app
 
